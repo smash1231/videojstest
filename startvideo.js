@@ -4,7 +4,8 @@ function init() {        // Master function, encapsulates all functions
 
       getVideo();
     function getVideo(){
-         var fileURL = GetUrlValue('videourl');  //document.getElementById("videoFile").value;  // get input field                    
+         var fileURL = GetUrlValue('video-m3u8');  //document.getElementById("videoFile").value;  // get input field          
+        var thumbURL = GetUrlValue('thumb');
         if (fileURL != "") {
             type = 'video/mp4'
             if(fileURL.indexOf('m3u8') != -1)
@@ -15,9 +16,9 @@ function init() {        // Master function, encapsulates all functions
                 type = 'application/dash+xml'
             }
 
-             player = videojs('my-video0', { plugins: {airplayButton:{}},
+             player = videojs('my-video0', {
                     controls: true,
-                    sources: [{src:  decodeURIComponent(fileURL), type:type}],
+                    sources: [{src:  decodeURIComponent(fileURL), type:type, poster(decodeURIComponent(thumbURL))}],
                     techOrder: [ 'html5']
                 });
              player.on('error', function(e) {
@@ -48,6 +49,18 @@ function init() {        // Master function, encapsulates all functions
 
 
 }
+
+function GetUrlValue(VarSearch){
+    var SearchString = window.location.search.substring(1);
+    var VariableArray = SearchString.split('&');
+    for(var i = 0; i < VariableArray.length; i++){
+        var KeyValuePair = VariableArray[i].split('=');
+        if(KeyValuePair[0] == VarSearch){
+            return KeyValuePair[1];
+        }
+    }
+}
+
 
 document.addEventListener('DOMContentLoaded', function () {
   //document.querySelector('button').addEventListener('click', myFunction);
