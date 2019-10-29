@@ -1,0 +1,44 @@
+
+<head>
+<link href="https://vjs.zencdn.net/7.6.5/video-js.css" rel="stylesheet">
+
+  <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+  <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+
+</head>
+
+
+  <body style="background-color:black;">
+
+    <div  style="display: table;
+                 position: absolute;
+                 height: 99%;
+                 width: 99%;" >             
+        <div style = " display: table-cell;
+                       vertical-align: middle;">
+            <div style ="margin-left: auto;
+                          margin-right: auto;
+                          width: 80%;">
+		    <video id="my-video0" class="video-js  vjs-16-9" controls preload="auto"  data-setup='{"fluid": true}' >
+      <!--<source src="MY_VIDEO.mp4" type='video/mp4'>-->
+                    <p class="vjs-no-js">
+                      To view this video please enable JavaScript, and consider upgrading to a web browser that
+                      <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                    </p>
+               </video>
+           </div>
+                <center>
+             <div "margin-left: auto;
+                          margin-right: auto;
+                          ">
+                 <br>
+                <button id="loadVideo" title="Load video button" >Load</button>
+                <button id="popVideo" title="Pop video button" >PopOut</button>
+            </div>
+                </center>
+
+        </div>
+      
+    </div>
+    
+</body>
