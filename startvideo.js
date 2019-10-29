@@ -18,7 +18,7 @@ function init() {        // Master function, encapsulates all functions
             }
 
             console.log("type " + type);
-             player = window.player = videojs('my_video_1');
+             player = window.player = videojs('my-video0');
 
              player.src( 
                     //sources: [{src:  decodeURIComponent(fileURL), type:type, poster:decodeURIComponent(thumbURL)}],
