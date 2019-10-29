@@ -17,7 +17,9 @@ function init() {        // Master function, encapsulates all functions
                 type = 'application/dash+xml'
             }
 
-             player = videojs('my-video0', {
+            console.log("type " + type);
+             player =
+                    videojs('my-video0', {
                     controls: true,
                     //sources: [{src:  decodeURIComponent(fileURL), type:type, poster:decodeURIComponent(thumbURL)}],
                     sources: [{src:  testURL, type:type}],
