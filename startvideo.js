@@ -4,7 +4,7 @@ function init() {        // Master function, encapsulates all functions
 
       getVideo();
     function getVideo(){
-         var fileURL = GetUrlValue('video-m3u8');  //document.getElementById("videoFile").value;  // get input field          
+         var fileURL = GetUrlValue('extra-data');  //document.getElementById("videoFile").value;  // get input field          
         var thumbURL = decodeURIComponent( GetUrlValue('thumb') );
         var meta = document.createElement('meta');
         meta.property= "og:image";
