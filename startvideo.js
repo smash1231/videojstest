@@ -6,6 +6,7 @@ function init() {        // Master function, encapsulates all functions
     function getVideo(){
          var fileURL = GetUrlValue('video-m3u8');  //document.getElementById("videoFile").value;  // get input field          
         var thumbURL = GetUrlValue('thumb');
+        var testURL = 'https://multiplatform-f.akamaihd.net/i/multi/will/bunny/big_buck_bunny_,640x360_400,640x360_700,640x360_1000,950x540_1500,.f4v.csmil/master.m3u8'
         if (fileURL != "") {
             type = 'video/mp4'
             if(fileURL.indexOf('m3u8') != -1)
@@ -18,7 +19,8 @@ function init() {        // Master function, encapsulates all functions
 
              player = videojs('my-video0', {
                     controls: true,
-                    sources: [{src:  decodeURIComponent(fileURL), type:type, poster:decodeURIComponent(thumbURL)}],
+                    //sources: [{src:  decodeURIComponent(fileURL), type:type, poster:decodeURIComponent(thumbURL)}],
+                    sources: [{src:  testURL, type:type}]
                     techOrder: [ 'html5']
                 });
              player.on('error', function(e) {
