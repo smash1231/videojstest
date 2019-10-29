@@ -23,7 +23,6 @@ function init() {        // Master function, encapsulates all functions
              player.src( 
                     //sources: [{src:  decodeURIComponent(fileURL), type:type, poster:decodeURIComponent(thumbURL)}],
                    {src:  testURL, type:type});
-                });
              player.on('error', function(e) {
                 console.log(e);
                 e.stopImmediatePropagation();
