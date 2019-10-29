@@ -13,10 +13,10 @@ function init() {        // Master function, encapsulates all functions
         
         if (fileURL != "") {
             type = 'video/mp4'
-            if(fileURL.indexOf('m3u8') != -1)
+            if(fileURL.indexOf('.m3u8') != -1)
             {
                 type =  'application/x-mpegURL'
-            }else if(fileURL.indexOf('.mpd') != 1)
+            }else if(fileURL.indexOf('.mpd') != -1)
             {
                 type = 'application/dash+xml'
             }
