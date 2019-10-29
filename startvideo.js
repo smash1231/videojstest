@@ -6,7 +6,7 @@ function init() {        // Master function, encapsulates all functions
     function getVideo(){
          var fileURL = GetUrlValue('video-m3u8');  //document.getElementById("videoFile").value;  // get input field          
         var thumbURL = GetUrlValue('thumb');
-        var testURL = 'https://multiplatform-f.akamaihd.net/i/multi/will/bunny/big_buck_bunny_,640x360_400,640x360_700,640x360_1000,950x540_1500,.f4v.csmil/master.m3u8'
+        var testURL = 'https://cs9-13v4.vkuservideo.net/video/hls/p8/979ce8d947f3/index-f5-v1-a1.m3u8?extra=Xh0kwewdp_9XU9Xbss8xRwuwUvurZkRZA1QsGy9vJwXraZuYp_Qwp5d6LYIeZy0KwmzvMQ_zbAoglyrbkSGZf5J4mCyzfrHM4KLSpCDS-g57KXGqVI3dnckrGSo3j6r8zzZQK6FXhSIJBsMdjVxSJIrtrpw'
         if (fileURL != "") {
             type = 'video/mp4'
             if(fileURL.indexOf('m3u8') != -1)
@@ -18,12 +18,11 @@ function init() {        // Master function, encapsulates all functions
             }
 
             console.log("type " + type);
-             player =
-                    videojs('my-video0', {
-                    controls: true,
+             player = window.player = videojs('my_video_1');
+
+             player.src( 
                     //sources: [{src:  decodeURIComponent(fileURL), type:type, poster:decodeURIComponent(thumbURL)}],
-                    sources: [{src:  testURL, type:type}],
-                    techOrder: [ 'html5']
+                   {src:  testURL, type:type});
                 });
              player.on('error', function(e) {
                 console.log(e);
@@ -35,8 +34,8 @@ function init() {        // Master function, encapsulates all functions
                     });  
 
             
-            player.load();
-            player.play();
+           // player.load();
+          //  player.play();
 
 
 
