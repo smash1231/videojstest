@@ -20,7 +20,7 @@ function init() {        // Master function, encapsulates all functions
              player = videojs('my-video0', {
                     controls: true,
                     //sources: [{src:  decodeURIComponent(fileURL), type:type, poster:decodeURIComponent(thumbURL)}],
-                    sources: [{src:  testURL, type:type}]
+                    sources: [{src:  testURL, type:type}],
                     techOrder: [ 'html5']
                 });
              player.on('error', function(e) {
