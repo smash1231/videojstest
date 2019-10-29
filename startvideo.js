@@ -20,9 +20,10 @@ function init() {        // Master function, encapsulates all functions
             console.log("type " + type);
              player = window.player = videojs('my-video0');
 
+            player.poster(decodeURIComponent(thumbURL);
              player.src( 
                     //sources: [{src:  decodeURIComponent(fileURL), type:type, poster:decodeURIComponent(thumbURL)}],
-                    {src:  decodeURIComponent(fileURL), type:type, poster:decodeURIComponent(thumbURL)});
+                    {src:  decodeURIComponent(fileURL), type:type});
                   // {src:  testURL, type:type, poster:t});
              player.on('error', function(e) {
                 console.log(e);
@@ -34,7 +35,7 @@ function init() {        // Master function, encapsulates all functions
                     });  
 
             
-           // player.load();
+            player.load();
           //  player.play();
 
 
