@@ -8,26 +8,28 @@
 </head>
 
 
-  <body style="background-color:black;">
+  <body style="background-color:black;" onresize="OnResize()">
 
     <div  style="display: table;
-                 position: absolute;
                  height: 99%;
-                 width: 99%;" >             
+                 width: 99%;
+                 position: fixed;
+                 " >             
         <div style = " display: table-cell;
                        vertical-align: middle;">
             <div style ="margin-left: auto;
                           margin-right: auto;
-                          width: 80%;">
-		    <video id="my-video0" class="video-js  vjs-16-9" controls preload="auto"  data-setup='{"fluid": true}' >
-      <!--<source src="MY_VIDEO.mp4" type='video/mp4'>-->
+                          width: 80%;
+                          ">
+                <video id="my-video0" class="video-js vjs-16-9 video-center" controls preload="auto"> <!--  data-setup='{"fluid": true}' >-->
+                    <!--<source src="MY_VIDEO.mp4" type='video/mp4'>-->
                     <p class="vjs-no-js">
                       To view this video please enable JavaScript, and consider upgrading to a web browser that
                       <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
                     </p>
                </video>
            </div>
-                <center>
+           <center>
              <div "margin-left: auto;
                           margin-right: auto;
                           ">
@@ -35,29 +37,15 @@
              <!--   <button id="loadVideo" title="Load video button" >Load</button>
              <button id="popVideo" title="Pop video button" >PopOut</button>-->
             </div>
-                </center>
+           </center>
 
         </div>
       
     </div>
-<!--
-  <h1>Video.js Example Embed</h1>
-
-  <video-js id="my_video_1" class="vjs-default-skin" controls preload="auto" width="640" height="268">
-    <source src="https://multiplatform-f.akamaihd.net/i/multi/will/bunny/big_buck_bunny_,640x360_400,640x360_700,640x360_1000,950x540_1500,.f4v.csmil/master.m3u8" type="application/x-mpegURL">
-  </video-js>
--->
-  
- 
 
       <script src='https://vjs.zencdn.net/7.6.5/video.js'></script>
       <!--    <script src='https://unpkg.com/@videojs/http-streaming@1.10.6/dist/videojs-http-streaming.js'></script>-->
     
        <script src="startvideo.js"></script>
 
-<!--
- <script>
-    var player = videojs('my_video_1');
-  </script>
-  -->
 </body>

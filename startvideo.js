@@ -76,9 +76,30 @@ function GetUrlValue(VarSearch){
     }
 }
 
+function OnResize()
+{
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    var sizeRatio = (w*0.8)/h;
+    var wideScreen = 16.0/9;
+
+    console.log("sizeRation: " + sizeRatio.toString() + " widescr " + wideScreen.toString());
+    if(sizeRatio > (16.0/9)){
+
+        var ratio = (h/(w * 0.8)) * 100;
+        document.getElementById("my-video0").style.paddingTop = ratio.toString() +"%";  
+        console.log("new ratio " + ratio.toString());
+            
+    }else{
+        document.getElementById("my-video0").style.paddingTop =null;  
+    }
+
+}
+
 
 document.addEventListener('DOMContentLoaded', function () {
   //document.querySelector('button').addEventListener('click', myFunction);
     init();
+   OnResize();
      });  
 
