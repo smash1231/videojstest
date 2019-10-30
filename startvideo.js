@@ -91,6 +91,7 @@ function OnResize()
     width = 80;
     
     screenWidthThreshold = 0.6;
+    screenHeightThreshold = 0.6;
 
     if(screenWidthRatio < screenWidthThreshold)
     {
@@ -111,10 +112,10 @@ function OnResize()
     if(sizeRatio > (16.0/9)){
 
         var ratio = (h/(w * (width/100))) * 100;
-        if(screenHeightRatio > 0.4)
+        if(screenHeightRatio > screenHeightThreshold)
         {   
 
-            var influence = (screenHeightRatio - 0.4) / 0.1;
+            var influence = (screenHeightRatio -screenHeightThreshold) / 0.1;
                 
             if(influence > 1)
             {
