@@ -101,8 +101,8 @@ function OnResize()
             swratio = 0.5;
         }
         width = 80 + ((screenWidthThreshold-swratio)/0.1) * 20;
-        if(width > 99)
-            width = 99;
+        if(width > 99.99)
+            width = 99.99;
 
 
     }
@@ -167,9 +167,9 @@ function OnResize()
             width -= (deduct*influence)
         // width = 80  * ((10/9)/sizeRatio);
 
-            if(width > 99)
+            if(width > 99.99)
             {
-                width = 99;
+                width = 99.99;
             }
 
         }
