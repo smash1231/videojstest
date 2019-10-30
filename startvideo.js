@@ -1,19 +1,4 @@
 
-async function foo(url)
-{
-//   var url = decodeURIComponent(fileURL);
-
-            let response = await fetch(url);
-
-    if (response.ok) { // if HTTP-status is 200-299
-      // get the response body (the method explained below)
-      console.log("response ok");
-      let json = await response.json();
-    } else {
-      alert("HTTP-Error: " + response.status);
-    }
-
-}
 
 function init() {        // Master function, encapsulates all functions
     var video = document.getElementById("my-video0");  
@@ -34,18 +19,22 @@ function init() {        // Master function, encapsulates all functions
 
 
         if (fileURL != "") {
-               
-            foo(decodeURIComponent(fileURL));
+
+      
 
          
             type = 'video/mp4'
-            if(fileURL.indexOf('.m3u8') != -1)
+            providedType = GetUrlValue('type');
+
+            if((providedType == "" && fileURL.indexOf('.m3u8') != -1) || providedType.indexOf('m3u8') != -1)
             {
                 type =  'application/x-mpegURL'
-            }else if(fileURL.indexOf('.mpd') != -1)
+            }else if((providedType == "" && fileURL.indexOf('.mpd') != -1) || providedType.indexOf('mpd') != -1 )
             {
                 type = 'application/dash+xml'
             }
+
+           
 
             console.log("type " + type);
              player = window.player = videojs('my-video0');
