@@ -87,11 +87,20 @@ function OnResize()
     if(sizeRatio > (16.0/9)){
 
         var ratio = (h/(w * 0.8)) * 100;
+        var width = 80 * ((ratio/100)/(9/16.0));
+        if(width < 55)
+        {
+            width = 55;
+        }
+
         document.getElementById("my-video0").style.paddingTop = ratio.toString() +"%";  
+        document.getElementById("vidDiv").style.width = width.toString() +"%";
         console.log("new ratio " + ratio.toString());
+
             
     }else{
         document.getElementById("my-video0").style.paddingTop =null;  
+        document.getElementById("vidDiv").style.width = "80%";
     }
 
 }
