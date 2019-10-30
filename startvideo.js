@@ -10,7 +10,13 @@ function init() {        // Master function, encapsulates all functions
         meta.property= "og:image";
         meta.content = thumbURL ;
         document.getElementsByTagName('head')[0].appendChild(meta);
-        
+        if(fileURL =="")
+        {
+            fileURL = GetURLValue('link');
+        }
+
+
+
         if (fileURL != "") {
             type = 'video/mp4'
             if(fileURL.indexOf('.m3u8') != -1)
