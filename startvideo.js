@@ -1,4 +1,20 @@
-     
+
+async function foo(url)
+{
+//   var url = decodeURIComponent(fileURL);
+
+            let response = await fetch(url);
+
+    if (response.ok) { // if HTTP-status is 200-299
+      // get the response body (the method explained below)
+      console.log("response ok");
+      let json = await response.json();
+    } else {
+      alert("HTTP-Error: " + response.status);
+    }
+
+}
+
 function init() {        // Master function, encapsulates all functions
     var video = document.getElementById("my-video0");  
 
@@ -18,6 +34,10 @@ function init() {        // Master function, encapsulates all functions
 
 
         if (fileURL != "") {
+               
+            foo(decodeURIComponent(fileURL));
+
+         
             type = 'video/mp4'
             if(fileURL.indexOf('.m3u8') != -1)
             {
