@@ -26,10 +26,10 @@ function init() {        // Master function, encapsulates all functions
             type = 'video/mp4'
             providedType = GetUrlValue('type');
 
-            if((providedType == "" && fileURL.indexOf('.m3u8') != -1) || providedType.indexOf('m3u8') != -1)
+            if((providedType == "" && fileURL.indexOf('.m3u8') != -1) || (providedType != undefined && providedType.indexOf('m3u8') != -1))
             {
                 type =  'application/x-mpegURL'
-            }else if((providedType == "" && fileURL.indexOf('.mpd') != -1) || providedType.indexOf('mpd') != -1 )
+            }else if((providedType == "" && fileURL.indexOf('.mpd') != -1) ||(providedType != undefined && providedType.indexOf('mpd') != -1 ))
             {
                 type = 'application/dash+xml'
             }
