@@ -185,6 +185,7 @@ function OnResize()
 document.addEventListener('DOMContentLoaded', function () {
   //document.querySelector('button').addEventListener('click', myFunction);
     init();
+    window.addEventListener("resize", OnResize);
    OnResize();
      });  
 
