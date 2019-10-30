@@ -80,17 +80,60 @@ function OnResize()
 {
     var w = window.innerWidth;
     var h = window.innerHeight;
-    var sizeRatio = (w*0.8)/h;
+   
     var wideScreen = 16.0/9;
 
-    console.log("sizeRation: " + sizeRatio.toString() + " widescr " + wideScreen.toString());
+    var screenW = window.screen.width;
+    var screenH = window.screen.height;
+
+    var screenWidthRatio = w/screenW;
+    var screenHeightRatio = h/screenH;
+    width = 80;
+    
+    screenWidthThreshold = 0.6;
+
+    if(screenWidthRatio < screenWidthThreshold)
+    {
+        swratio = screenWidthRatio;
+        if(swratio < 0.5)
+        {
+            swratio = 0.5;
+        }
+        width = 80 + ((screenWidthThreshold-swratio)/0.1) * 20;
+        if(width > 99)
+            width = 99;
+
+
+    }
+    var sizeRatio = (w*(width/100))/h;
+
+    //console.log("sizeRation: " + sizeRatio.toString() + " widescr " + wideScreen.toString());
     if(sizeRatio > (16.0/9)){
 
-        var ratio = (h/(w * 0.8)) * 100;
-        var width = 80 * ((ratio/100)/(9/16.0));
-        if(width < 72)
-        {
-            width = 72;
+        var ratio = (h/(w * (width/100))) * 100;
+        if(screenHeightRatio > 0.4)
+        {   
+
+            var influence = (screenHeightRatio - 0.4) / 0.1;
+                
+            if(influence > 1)
+            {
+                influence = 1;
+            }
+            if(influence< 0)
+            {
+                influence = 0;
+            }
+
+            deduct = width * (1- ((ratio/100)/(9/16.0)));
+
+            width -= (deduct*influence)
+
+            if(width < 72)
+            {
+                width = 72;
+            }
+
         }
 
         
@@ -103,17 +146,20 @@ function OnResize()
     }
     else{
         document.getElementById("my-video0").style.paddingTop =null;  
-        width = 80;
-        if(sizeRatio < (10/9))
+        if(sizeRatio < (10/9) && screenWidthRatio > screenWidthThreshold)
         {
 
-         width = 80 * ((10/9)/sizeRatio);
+         width = width  * ((10/9)/sizeRatio);
+
             if(width > 99)
             {
                 width = 99;
             }
 
         }
+
+       
+
         document.getElementById("vidDiv").style.width = width.toString() +"%";
     }
 
