@@ -12,7 +12,7 @@ function init() {        // Master function, encapsulates all functions
         document.getElementsByTagName('head')[0].appendChild(meta);
         if(fileURL =="")
         {
-            fileURL = GetURLValue('link');
+            fileURL = GetUrlValue('link');
         }
 
 
