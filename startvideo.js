@@ -88,19 +88,33 @@ function OnResize()
 
         var ratio = (h/(w * 0.8)) * 100;
         var width = 80 * ((ratio/100)/(9/16.0));
-        if(width < 55)
+        if(width < 72)
         {
-            width = 55;
+            width = 72;
         }
+
+        
 
         document.getElementById("my-video0").style.paddingTop = ratio.toString() +"%";  
         document.getElementById("vidDiv").style.width = width.toString() +"%";
         console.log("new ratio " + ratio.toString());
 
             
-    }else{
+    }
+    else{
         document.getElementById("my-video0").style.paddingTop =null;  
-        document.getElementById("vidDiv").style.width = "80%";
+        width = 80;
+        if(sizeRatio < (10/9))
+        {
+
+         width = 80 * ((10/9)/sizeRatio);
+            if(width > 99)
+            {
+                width = 99;
+            }
+
+        }
+        document.getElementById("vidDiv").style.width = width.toString() +"%";
     }
 
 }
