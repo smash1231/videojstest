@@ -149,7 +149,22 @@ function OnResize()
         if(sizeRatio < (10/9) && screenWidthRatio > screenWidthThreshold)
         {
 
-         width = width  * ((10/9)/sizeRatio);
+          var influence = (screenWidthRatio - screenWidthThreshold) / 0.1;
+                
+            if(influence > 1)
+            {
+                influence = 1;
+            }
+            if(influence< 0)
+            {
+                influence = 0;
+            }
+
+            deduct = 80  *(1-((10/9)/sizeRatio) );
+           // deduct = width * (1- ((ratio/100)/(9/16.0)));
+
+            width -= (deduct*influence)
+        // width = 80  * ((10/9)/sizeRatio);
 
             if(width > 99)
             {
