@@ -57,6 +57,7 @@ function init() {        // Master function, encapsulates all functions
             
             player.load();
            player.play();
+            player.userActive(true);
 
         } else {
              var error = "Enter a valid video URL";
