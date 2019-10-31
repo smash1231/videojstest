@@ -40,9 +40,9 @@ function init() {        // Master function, encapsulates all functions
              player = window.player = videojs('my-video0');
 
             player.poster(thumbURL);
-            player.controls(true);
-            player.autoplay(true);
-            player.preload("auto");
+//            player.controls(true);
+ //           player.autoplay(true);
+  //          player.preload("auto");
              player.src( 
                     {src:  decodeURIComponent(fileURL), type:type});
              player.on('error', function(e) {
@@ -57,7 +57,7 @@ function init() {        // Master function, encapsulates all functions
             
             player.load();
            player.play();
-            player.userActive(true);
+          //  player.userActive(true);
 
         } else {
              var error = "Enter a valid video URL";
