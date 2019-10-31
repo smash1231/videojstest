@@ -45,13 +45,6 @@ function init() {        // Master function, encapsulates all functions
   //          player.preload("auto");
              player.src( 
                     {src:  decodeURIComponent(fileURL), type:type});
-            player.on('tap', function() {
-              if (player.paused()) {
-                player.play();
-              } else {
-                player.pause();
-              }
-            });
              player.on('error', function(e) {
                 console.log(e);
                 e.stopImmediatePropagation();
@@ -211,3 +204,33 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }, false);
 
+touchTime = 0;
+
+document.addEventListener('touchstart', function(event){
+
+    touchTime = new Date();
+
+},false);
+
+document.addEventListener('touchend', function(event){
+    time = new Date();
+    
+    diff = time-touchTime;
+
+    if(diff.getSeconds() < 1);
+    {
+        player = videojs('my-video0');
+        if(player.paused())
+        {
+            player.play();
+
+        }else{
+            player.pause();
+        }
+
+
+
+
+    }
+
+},false);
