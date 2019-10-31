@@ -45,6 +45,13 @@ function init() {        // Master function, encapsulates all functions
   //          player.preload("auto");
              player.src( 
                     {src:  decodeURIComponent(fileURL), type:type});
+            player.on('tap', function() {
+              if (player.paused()) {
+                player.play();
+              } else {
+                player.pause();
+              }
+            });
              player.on('error', function(e) {
                 console.log(e);
                 e.stopImmediatePropagation();
