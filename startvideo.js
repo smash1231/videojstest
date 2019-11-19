@@ -54,6 +54,7 @@ function init() {        // Master function, encapsulates all functions
 
                     });  
 
+
             
             player.load();
            player.play();
@@ -234,3 +235,16 @@ document.addEventListener('touchend', function(event){
     }
 
 },false);
+
+document.addEventListener("fullscreenchange", function () {
+    OnResize();
+    console.log(document.fullscreen);
+}, false);
+document.addEventListener("mozfullscreenchange", function () {
+    OnResize();
+    console.log(document.mozFullScreen);
+}, false);
+document.addEventListener("webkitfullscreenchange", function () {
+    OnResize();
+    console.log(document.webkitIsFullScreen);
+}, false);
