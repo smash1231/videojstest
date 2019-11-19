@@ -212,7 +212,6 @@ document.addEventListener('touchstart', function(event){
     touchTime = new Date();
 
 },false);
-
 document.addEventListener('touchend', function(event){
     time = new Date();
     
@@ -248,3 +247,8 @@ document.addEventListener("webkitfullscreenchange", function () {
     OnResize();
     console.log(document.webkitIsFullScreen);
 }, false);
+
+document.onfullscreenchange = function ( event ) { 
+    OnResize();
+}; 
+
