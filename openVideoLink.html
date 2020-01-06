@@ -12,7 +12,8 @@
         url =  decodeURIComponent(GetUrlValue('url'));
         console.log(url)
         var b =document.getElementById('urldiv');
-        b.innerHTML = "<a href=\"" + url + "\" download>Right Click this Link and save as</a>";
+        filename =url.substr(filePath.lastIndexOf('/') + 1);
+        b.innerHTML = "<a href=\"" + url + "\" download>Right Click this Link and save as to download " + filename + "</a>";
        // b.click();
       //  downloadFile(url);
     }
