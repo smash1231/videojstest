@@ -5,7 +5,7 @@
     {
         url =  decodeURIComponent(GetUrlValue('url'));
         console.log(url)
-        document.getElementById('urldiv').innerHTML = "<a href=\"" + url + "\">video Link</a>";
+        document.getElementById('urldiv').innerHTML = "<a href=\"" + url + "\">Loading Link or click here</a>";
         window.location.href =  url;     
     }
     function GetUrlValue(VarSearch){
@@ -19,9 +19,22 @@
     }
     }
     </script>
+    <style>
+        #wrapper {
+            >position: absolute;
+            top:  50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        #urldiv{
+            font-size: 1.2em;
+        }
+    </style>
     </head>
 
     <body onload="load()">
+        <div id="wrapper">
         <div id = "urldiv"><a href="https://www.w3schools.com/html/">Visit our HTML tutorial</a></div>
+        </div>
     </body>
 </html> 
