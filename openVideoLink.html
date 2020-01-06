@@ -4,8 +4,8 @@
     function load()
     {
         url =  decodeURIComponent(GetUrlValue('url'));
-        document.getElementById('urldiv').innerHTML = "<a href=" + url ">";
-        window.location.href =   url     
+        document.getElementById('urldiv').innerHTML = "<a href=\"" + url + "\">";
+        window.location.href =  url;     
     }
     function GetUrlValue(VarSearch){
     var SearchString = window.location.search.substring(1);
