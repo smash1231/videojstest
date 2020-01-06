@@ -1,12 +1,12 @@
 <html>
-    <head>
+ <head>
     <script type="text/javascript">
-        function downloadFile(filePath){
-    var link=document.createElement('a');
-    link.href = filePath;
-    link.download = filePath.substr(filePath.lastIndexOf('/') + 1);
-    link.click();
-}
+    function downloadFile(filePath){
+        var link=document.createElement('a');
+        link.href = filePath;
+        link.download = filePath.substr(filePath.lastIndexOf('/') + 1);
+        link.click();
+    }
     function load()
     {
         url =  decodeURIComponent(GetUrlValue('url'));
@@ -14,36 +14,36 @@
         var b =document.getElementById('urldiv');
         filename =url.substr(url.lastIndexOf('/') + 1);
         b.innerHTML = "<a href=\"" + url + "\" download>Right Click this Link and save as to download " + filename + "</a>";
-       // b.click();
-      //  downloadFile(url);
+        // b.click();
+        // downloadFile(url);
     }
     function GetUrlValue(VarSearch){
-    var SearchString = window.location.search.substring(1);
-    var VariableArray = SearchString.split('&');
-    for(var i = 0; i < VariableArray.length; i++){
-        var KeyValuePair = VariableArray[i].split('=');
-        if(KeyValuePair[0] == VarSearch){
-            return KeyValuePair[1];
+        var SearchString = window.location.search.substring(1);
+        var VariableArray = SearchString.split('&');
+        for(var i = 0; i < VariableArray.length; i++){
+            var KeyValuePair = VariableArray[i].split('=');
+            if(KeyValuePair[0] == VarSearch){
+                return KeyValuePair[1];
+            }
         }
-    }
     }
     </script>
     <style>
-        #wrapper {
-            position: absolute;
-            top:  50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-        }
-        #urldiv{
-            font-size: 1.2em;
-        }
+    #wrapper {
+        position: absolute;
+        top:  50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    #urldiv{
+        font-size: 1.2em;
+    }
     </style>
-    </head>
+ </head>
 
-    <body onload="load()">
-        <div id="wrapper">
+ <body onload="load()">
+    <div id="wrapper">
         <div id = "urldiv"><a href="https://www.w3schools.com/html/">Visit our HTML tutorial</a></div>
-        </div>
-    </body>
+    </div>
+ </body>
 </html> 
