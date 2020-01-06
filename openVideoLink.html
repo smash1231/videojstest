@@ -1,12 +1,20 @@
 <html>
     <head>
     <script type="text/javascript">
+        function downloadFile(filePath){
+    var link=document.createElement('a');
+    link.href = filePath;
+    link.download = filePath.substr(filePath.lastIndexOf('/') + 1);
+    link.click();
+}
     function load()
     {
         url =  decodeURIComponent(GetUrlValue('url'));
         console.log(url)
-        document.getElementById('urldiv').innerHTML = "<a href=\"" + url + "\">Loading Link or click here</a>";
-        window.location.href =  url;     
+        var b =document.getElementById('urldiv');
+        b.innerHTML = "<a href=\"" + url + "\" download>Right Click this Link and save as</a>";
+       // b.click();
+      //  downloadFile(url);
     }
     function GetUrlValue(VarSearch){
     var SearchString = window.location.search.substring(1);
