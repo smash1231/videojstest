@@ -4,7 +4,8 @@
     function load()
     {
         url =  decodeURIComponent(GetUrlValue('url'));
-        document.getElementById('urldiv').innerHTML = "<a href=\"" + url + "\">";
+        console.log(url)
+        document.getElementById('urldiv').innerHTML = "<a href=\"" + url + "\">video Link</a>";
         window.location.href =  url;     
     }
     function GetUrlValue(VarSearch){
