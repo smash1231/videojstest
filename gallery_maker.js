@@ -90,7 +90,7 @@ function getZipFile()
               compression: "DEFLATE", // <-- here
               type: "blob", 
           },function updateCallback(metadata) {
-            button.innerHTML = "Please Wait. Zipping files " + metadata.percent + '%';}).then(function(content) {
+            button.innerHTML = "Please Wait. Zipping files " + metadata.percent.toFixed(1) + '%';}).then(function(content) {
                   saveAs(content, "images.zip");
                     button.addEventListener("click", getZipFile, false);
                     button.innerHTML = "Download images in zip"
