@@ -60,6 +60,10 @@ function getZipFile()
     button.removeEventListener("click", getZipFile , false);
     button.innerHTML = "please wait. Downloading files and creating zip file..."
 
+    var zipFileName = getFileName(highResUrlArray[0]);
+   var lastIndex=zipFileName.lastIndexOf(".");
+    zipFileName = zipFileName.slice(0,lastIndex+1);
+
     var urls = highResUrlArray;
     function request(url) {
         return new Promise(function(resolve) {
@@ -91,7 +95,7 @@ function getZipFile()
               type: "blob", 
           },function updateCallback(metadata) {
             button.innerHTML = "Please Wait. Zipping files " + metadata.percent.toFixed(1) + '%';}).then(function(content) {
-                  saveAs(content, "images.zip");
+                  saveAs(content, zipFileName + "zip");
                     button.addEventListener("click", getZipFile, false);
                     button.innerHTML = "Download images in zip"
 
@@ -134,7 +138,25 @@ function createGallery()
         imageCrop: false,
         popupLinks: true
     });
-      Galleria.run('.galleria');
+    Galleria.run('.galleria');
+    
+    Galleria.ready(function() {
+
+        var gallery = Galleria.get(0);
+        document.onkeyup = KeyCheck;       
+        function KeyCheck(e) {
+            var KeyID = (window.event) ? event.keyCode : e.keyCode;
+            switch(KeyID) {
+                case 37: //press left arrow 
+                    gallery.prev();
+                    break;
+                case 39: //press right arrow
+                    gallery.next();
+                    break;
+            }
+        }           
+    });
+
 
     document.getElementById("downloadButton").addEventListener("click", getZipFile, false);
 
