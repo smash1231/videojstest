@@ -1,22 +1,56 @@
 <html>
     <head>
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip-utils/0.1.0/jszip-utils.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.2/jszip.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
         <script src="galleria.min.js"></script>
 
         <link rel="stylesheet" type="text/css" href="azur/galleria.azur.min.css" />
 
         <script src="azur/galleria.azur.min.js"></script>
         <script src="gallery_maker.js"></script> 
-        <style>
+   <style>
     .galleria{
         height: 90%;
         width: 90%;    
         margin: 0 auto;
         text-align: center;
     }
-      
+    #buttonDiv
+    { 
+        margin: 0 auto;
+        text-align: center;
+    }
     
-</style>
+    .myButton
+    {
+        box-shadow:inset 0px -3px 7px 0px #29bbff;
+        background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+        background-color:#2dabf9;
+        border-radius:3px;
+        border:1px solid #0b0e07;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font-family:Arial;
+        font-size:15px;
+        padding:9px 23px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #263666;
+    }
+    .myButton:hover {
+        background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+        background-color:#0688fa;
+    }
+    .myButton:active {
+        position:relative;
+        top:1px;
+    }
+
+        
+    
+    </style>
 
     </head>
               
@@ -26,6 +60,10 @@
         </div>
         <div id= "wrapper" >
             <div class= "galleria"> "test"
+            </div>
+            </br>
+            <div id = "buttonDiv">
+            <button class ="myButton" style="text-align: center;" id="downloadButton" title="Download images in zip" >Download Zip File</button>
             </div>
         </div>
   </body>
