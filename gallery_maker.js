@@ -7,15 +7,22 @@ function pad(n, width, z) {
 }
 
 
-function GetUrlArray(inputUrl)
+function GetUrlArray(inputUrl, start = 0, end = 0)
 {
     var urls = []
     var patt = /\[(.*?)\]/g
     var result = inputUrl.match(patt);
     var numberRange = result[0].replace(/[\[\]']+/g,'');
+    var rangeStart = start;
+    var rangeEnd = end;
+
+
     var splitRange = numberRange.split("-");
-    var rangeStart = parseInt(splitRange[0]);
-    var rangeEnd = parseInt(splitRange[1]);
+
+    if(rangeStart == 0 && rangeStart == rangeEnd){
+        rangeStart = parseInt(splitRange[0]);
+        rangeEnd = parseInt(splitRange[1]);
+    }
 
     var stringLen = splitRange[0].length;
 
@@ -106,22 +113,40 @@ function getZipFile()
 
 function createGallery()
 {
+    var startRange = decodeURIComponent( GetUrlValue('startRange') );
+    var endRange = decodeURIComponent( GetUrlValue('endRange') );
+
+    var start = 0;
+    var end = 0;
+    if(!startRange.includes("undefined") &&  
+            !endRange.includes("undefined") && startRange.length > 0 
+    && endRange.length > 0)
+    {
+        console.log(startRange);
+        start = parseInt(startRange);
+        end = parseInt(endRange);
+
+    }
+
+
+
     var thumbsUrl = decodeURIComponent( GetUrlValue('thumbs') );
     var imagesUrl = decodeURIComponent( GetUrlValue('images') );
     var imagesLowResUrl = decodeURIComponent( GetUrlValue('imagesLow') );
-    
+    var show_download_button =decodeURIComponent( GetUrlValue('nodownload') );
+   
   //  console.log(imagesUrl);
   //  console.log(typeof imagesLowResUrl);
   //  console.log(imagesLowResUrl.length);
+    
 
-
-    var imageUrls = GetUrlArray(imagesUrl);
+    var imageUrls = GetUrlArray(imagesUrl,start, end);
     highResUrlArray = imageUrls;
-    var thumbUrls = GetUrlArray(thumbsUrl);
+    var thumbUrls = GetUrlArray(thumbsUrl,start,end);
     var imageLowUrls = imageUrls;
     if(imagesLowResUrl != undefined && imagesLowResUrl != null && imagesLowResUrl.length > 10) 
     {
-        imageLowUrls = GetUrlArray(imagesLowResUrl);
+        imageLowUrls = GetUrlArray(imagesLowResUrl,start,end);
     }
     
     htmlString = ""
@@ -157,8 +182,17 @@ function createGallery()
         }           
     });
 
+    console.log(show_download_button);
+    if( show_download_button == undefined || show_download_button.length > 2)
+    {
+        document.getElementById("downloadButton").addEventListener("click", getZipFile, false);
+    }else{
+                
+            var element = document.getElementById("downloadButton");
+            element.parentNode.removeChild(element);
 
-    document.getElementById("downloadButton").addEventListener("click", getZipFile, false);
+
+    }
 
 }
 
