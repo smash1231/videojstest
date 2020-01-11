@@ -158,7 +158,7 @@ function createGallery()
     var b =document.getElementsByClassName('galleria')[0];
     b.innerHTML = htmlString;
 
-    Galleria.loadTheme('azur/galleria.azur.min.js');
+    //Galleria.loadTheme('azur/galleria.azur.min.js');
     Galleria.configure({
         imageCrop: false,
         popupLinks: true
