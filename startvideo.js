@@ -30,8 +30,6 @@ function init() {        // Master function, encapsulates all functions
       
             if( jsonUrl != "" || jsonUrl.indexOf( "undefined") == -1)
             {
-                console.log(jsonUrl);
-
                 jQuery.getJSON(jsonUrl, function(data){
 
                      var replacementBetween = data.replaceBetween;
