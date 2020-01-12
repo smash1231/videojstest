@@ -1,4 +1,7 @@
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 
 function init() {        // Master function, encapsulates all functions
     var video = document.getElementById("my-video0");  
@@ -18,23 +21,61 @@ function init() {        // Master function, encapsulates all functions
 
 
 
+
+
         if (fileURL != "") {
+            fileURL = decodeURIComponent(fileURL);
 
+            var jsonUrl = decodeURIComponent( GetUrlValue('json') );
       
+            if( jsonUrl != "" || jsonUrl.indexOf( "undefined") == -1)
+            {
+                console.log(jsonUrl);
 
+                jQuery.getJSON(jsonUrl, function(data){
+
+                     var replacementBetween = data.replaceBetween;
+                     var replacement = fileURL.substring(
+                                    fileURL.lastIndexOf(replacementBetween[0]) + replacementBetween[0].length, 
+                                    fileURL.lastIndexOf(replacementBetween[1])
+                                     );
+                    
+                     var replaceArr = data.key;
+                     var replaceWith = replaceArr[getRandomInt(replaceArr.length)];
+
+                     fileURL = fileURL.replace(replacement, replaceWith);
+                     CreatePlayer(fileURL, thumbURL);
+                });
+                return;
+
+            }
+
+            CreatePlayer(fileURL,thumbURL );
          
+
+        } else {
+             var error = "Enter a valid video URL";
+          
+             errMessage(error);
+        }
+    }
+
+
+}
+
+function CreatePlayer(fileURL, thumbURL)
+{
+
             type = 'video/mp4'
             providedType = GetUrlValue('type');
 
             if((providedType == "" && fileURL.indexOf('.m3u8') != -1) || (providedType != undefined && providedType.indexOf('m3u8') != -1))
             {
-                type =  'application/x-mpegURL'
+                    type =  'application/x-mpegURL'
             }else if((providedType == "" && fileURL.indexOf('.mpd') != -1) ||(providedType != undefined && providedType.indexOf('mpd') != -1 ))
             {
                 type = 'application/dash+xml'
             }
-
-           
 
             console.log("type " + type);
              player = window.player = videojs('my-video0');
@@ -44,7 +85,7 @@ function init() {        // Master function, encapsulates all functions
  //           player.autoplay(true);
   //          player.preload("auto");
              player.src( 
-                    {src:  decodeURIComponent(fileURL), type:type});
+                    {src:  fileURL, type:type});
              player.on('error', function(e) {
                 console.log(e);
                 e.stopImmediatePropagation();
@@ -60,15 +101,9 @@ function init() {        // Master function, encapsulates all functions
            player.play();
           //  player.userActive(true);
 
-        } else {
-             var error = "Enter a valid video URL";
-          
-             errMessage(error);
-        }
-    }
-
 
 }
+
 
 function GetUrlValue(VarSearch){
     var SearchString = window.location.search.substring(1);
