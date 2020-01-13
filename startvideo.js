@@ -28,7 +28,7 @@ function init() {        // Master function, encapsulates all functions
 
             var jsonUrl = decodeURIComponent( GetUrlValue('json') );
       
-            if( jsonUrl != "" || jsonUrl.indexOf( "undefined") == -1)
+            if( jsonUrl != "" && jsonUrl.indexOf("undefined") == -1)
             {
                 jQuery.getJSON(jsonUrl, function(data){
 
