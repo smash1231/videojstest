@@ -154,6 +154,7 @@ function createGallery()
          htmlString  += `<a href=" ${imageLowUrls[i]}"><img src="${thumbUrls[i]}" data-link="${imageUrls[i]}"></a>\n`// data-big="${imageUrls[i]}"></a>\n`
 
     }
+    htmlString  += `<a href="https://i.imgur.com/CpdncZt.jpg"><img src="https://i.imgur.com/CpdncZt.jpg" ></a>\n`// data-big="${imageUrls[i]}"></a>\n`
 
     var b =document.getElementsByClassName('galleria')[0];
     b.innerHTML = htmlString;
