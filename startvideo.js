@@ -33,15 +33,17 @@ function init() {        // Master function, encapsulates all functions
                 jQuery.getJSON(jsonUrl, function(data){
 
                      var replacementBetween = data.replaceBetween;
-                     var replacement = fileURL.substring(
-                                    fileURL.lastIndexOf(replacementBetween[0]) + replacementBetween[0].length, 
-                                    fileURL.lastIndexOf(replacementBetween[1])
-                                     );
-                    
                      var replaceArr = data.key;
                      var replaceWith = replaceArr[getRandomInt(replaceArr.length)];
+                     var startIndex = fileURL.lastIndexOf(replacementBetween[0]) + replacementBetween[0].length;
 
-                     fileURL = fileURL.replace(replacement, replaceWith);
+                    if(fileURL.indexOf(replacementBetween[1]) != -1 && replacementBetween[1].indexOf("undefined") == -1 )
+                    {
+                        var replacement = fileURL.substring( startIndex,fileURL.lastIndexOf(replacementBetween[1]));
+                         fileURL = fileURL.replace(replacement, replaceWith);
+                    }else{
+                        fileURL =fileURL.slice(0, startIndex) + replaceWith + "&"+ fileURL.slice(startIndex);
+                    }
                      CreatePlayer(fileURL, thumbURL);
                 });
                 return;
