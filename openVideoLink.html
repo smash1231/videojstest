@@ -1,6 +1,13 @@
 <html>
  <head>
+     <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
     <script type="text/javascript">
+        function getRandomInt(max) {
+          return Math.floor(Math.random() * Math.floor(max));
+        }
     function downloadFile(filePath){
         var link=document.createElement('a');
         link.href = filePath;
@@ -9,14 +16,43 @@
     }
     function load()
     {
-        url =  decodeURIComponent(GetUrlValue('url'));
-        console.log(url)
+       url =  decodeURIComponent(GetUrlValue('url'));
+       var jsonUrl = decodeURIComponent( GetUrlValue('json') );
+      
+      if( jsonUrl != "" && jsonUrl.indexOf("undefined") == -1)
+      {
+          jQuery.getJSON(jsonUrl, function(data){
+
+               var replacementBetween = data.replaceBetween;
+               var replacement = url.substring(
+                                  url.lastIndexOf(replacementBetween[0]) + replacementBetween[0].length, 
+                                   url.lastIndexOf(replacementBetween[1])
+                               );
+              
+               var replaceArr = data.key;
+               var replaceWith = replaceArr[getRandomInt(replaceArr.length)];
+
+               url = url.replace(replacement, replaceWith);
+               ReplaceDiv(url)
+          });
+          return;
+
+        }
+        ReplaceDiv(url);
+    }
+
+    function ReplaceDiv(url)
+    {
         var b =document.getElementById('urldiv');
         filename =url.substr(url.lastIndexOf('/') + 1);
+        filename = filename.split('.mp4')[0] +".mp4";
         b.innerHTML = "<a href=\"" + url + "\" download>Right Click this Link and save as to download " + filename + "</a>";
         // b.click();
         // downloadFile(url);
+
+
     }
+
     function GetUrlValue(VarSearch){
         var SearchString = window.location.search.substring(1);
         var VariableArray = SearchString.split('&');
